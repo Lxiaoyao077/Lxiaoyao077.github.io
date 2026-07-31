@@ -32,9 +32,9 @@
   --lx-orange-dim:    rgba(210, 153, 34, 0.12);
 
   /* Typography */
-  --lx-font-heading:  'Space Grotesk', system-ui, -apple-system, sans-serif;
-  --lx-font-body:     'DM Sans', system-ui, -apple-system, sans-serif;
-  --lx-font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+  --lx-font-heading:  system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lx-font-body:     system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lx-font-mono:     'Cascadia Code', 'Fira Code', 'Consolas', monospace;
 
   /* Spacing */
   --lx-space-xs:  0.5rem;
