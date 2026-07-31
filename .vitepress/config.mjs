@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-Hans',
-  title: 'Lxiaoyao',
+  title: 'Lxyao',
   description: '内核折腾，向死而生。',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
@@ -18,7 +18,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Powered by VitePress',
-      copyright: 'Copyright © 2026 Lxiaoyao'
+      copyright: 'Copyright © 2026 Lxyao'
     }
   },
   markdown: {

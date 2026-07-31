@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Lxiaoyao"
+  name: "Lxyao"
   text: "内核折腾，向死而生。"
   tagline: Android GKI 内核 / KernelSU / 安全研究
   actions:
