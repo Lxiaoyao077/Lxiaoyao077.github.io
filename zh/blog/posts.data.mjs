@@ -1,6 +1,6 @@
 import { createContentLoader } from 'vitepress'
 
-export default createContentLoader('/zh/blog/*.md', {
+export default createContentLoader('/blog/*.md', {
   includeSrc: false,
   excerpt: false,
   render: false,
