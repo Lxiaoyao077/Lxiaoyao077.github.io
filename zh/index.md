@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 阅读博客
-      link: /zh/blog/
+      link: /blog/
     - theme: alt
       text: GitHub
       link: https://github.com/Lxiaoyao077
