@@ -4,6 +4,7 @@ export default defineConfig({
   lang: 'zh-Hans',
   title: 'Lxyao',
   description: '内核折腾，向死而生。',
+  srcDir: 'zh',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
@@ -18,9 +19,9 @@ export default defineConfig({
     logo: false,
 
     nav: [
-      { text: '首页', link: '/zh/' },
-      { text: '博客', link: '/zh/blog/' },
-      { text: '关于', link: '/zh/about' },
+      { text: '首页', link: '/' },
+      { text: '博客', link: '/blog/' },
+      { text: '关于', link: '/about' },
     ],
 
     socialLinks: [
@@ -29,7 +30,7 @@ export default defineConfig({
 
     // Blog sidebar
     sidebar: {
-      '/zh/blog/': [
+      '/blog/': [
         {
           text: '文章列表',
           items: []  // dynamically populated — see posts.data.mjs
