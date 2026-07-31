@@ -1,5 +1,5 @@
 <script setup>
-import { data as posts } from '../../zh/blog/posts.data.mjs'
+import { data as posts } from '../../../zh/blog/posts.data.mjs'
 </script>
 
 <template>
