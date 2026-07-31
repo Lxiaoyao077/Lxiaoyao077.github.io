@@ -12,3 +12,12 @@ hero:
     - theme: alt
       text: GitHub
       link: https://github.com/Lxiaoyao077
+---
+
+<BentoHome />
+
+<style>
+.VPHero {
+  padding-bottom: 0 !important;
+}
+</style>
