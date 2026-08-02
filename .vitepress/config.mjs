@@ -43,8 +43,8 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Powered by VitePress',
-      copyright: 'Copyright © 2026 Lxyao'
+      message: '',
+      copyright: '© 2026 Lxyao'
     },
 
     outline: {
