@@ -5,17 +5,27 @@ export default defineConfig({
   title: 'Lxyao',
   description: '内核折腾，向死而生。',
   srcDir: 'zh',
+
+  // MPA mode — each page standalone, no SPA hydration
+  mpa: true,
+  ignoreDeadLinks: true,
+  cleanUrls: true,
+
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
 
-  // Enable local search
-  search: {
-    provider: 'local'
+  // Filter out Inter font preloads (we use system fonts)
+  transformHead: ({ assets }) => {
+    const tags = []
+    for (const asset of assets) {
+      if (asset.includes('inter-')) continue
+      tags.push(['link', { rel: 'preload', href: asset, as: 'style' }])
+    }
+    return tags
   },
 
   themeConfig: {
-    // Logo
     logo: false,
 
     nav: [
@@ -28,12 +38,11 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/Lxiaoyao077' },
     ],
 
-    // Blog sidebar
     sidebar: {
       '/blog/': [
         {
           text: '文章列表',
-          items: []  // dynamically populated — see posts.data.mjs
+          items: []
         }
       ]
     },
@@ -43,18 +52,6 @@ export default defineConfig({
       copyright: 'Copyright © 2026 Lxyao'
     },
 
-    // Edit link
-    editLink: {
-      pattern: 'https://github.com/Lxiaoyao077/Lxiaoyao077.github.io/edit/main/zh/:path',
-      text: '在 GitHub 上编辑此页'
-    },
-
-    // Last updated
-    lastUpdated: {
-      text: '最后更新于'
-    },
-
-    // Outline
     outline: {
       level: [2, 3],
       label: '页面导航'
