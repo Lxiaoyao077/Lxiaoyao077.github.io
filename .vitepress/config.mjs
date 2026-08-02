@@ -15,14 +15,9 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
 
-  // Filter out Inter font preloads (we use system fonts)
-  transformHead: ({ assets }) => {
-    const tags = []
-    for (const asset of assets) {
-      if (asset.includes('inter-')) continue
-      tags.push(['link', { rel: 'preload', href: asset, as: 'style' }])
-    }
-    return tags
+  // Strip Inter font preloads (680KB+ wasted for Chinese blog)
+  transformHtml(code) {
+    return code.replace(/<link[^>]*inter-[^>]*\/?>/gi, '')
   },
 
   themeConfig: {
