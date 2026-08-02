@@ -1,582 +1,462 @@
 /* ============================================
-   Lxyao Blog — Custom Dark Theme
-   内核开发者 | Terminal Aesthetic
+   Lxyao — Warm Dark + Amber Gold
+   Minimal. Readable. No bullshit.
    ============================================ */
 
-/* --- Google Fonts --- */
-
-/* --- Design Tokens --- */
+/* --- Tokens --- */
 :root {
-  /* Colors — Dark Terminal */
-  --lx-bg:            #0D1117;
-  --lx-bg-elevated:   #161B22;
-  --lx-bg-hover:      #1C2129;
-  --lx-border:        #30363D;
-  --lx-border-light:  #21262D;
-  --lx-text-primary:  #E6EDF3;
-  --lx-text-secondary:#8B949E;
-  --lx-text-muted:    #484F58;
+  --c-bg: #0D0D0D;
+  --c-surface: #141414;
+  --c-surface-hover: #1A1A1A;
+  --c-border: #262626;
+  --c-border-light: #1F1F1F;
+  --c-text: #EDE8DF;
+  --c-text-dim: #8C8880;
+  --c-text-muted: #5C5850;
+  --c-amber: #F59E0B;
+  --c-amber-dim: rgba(245, 158, 11, 0.10);
+  --c-amber-glow: rgba(245, 158, 11, 0.18);
+  --c-amber-hover: #FBBF24;
+  --c-code-bg: #1A1A1A;
+  --c-danger: #EF4444;
 
-  /* Accent — Terminal Green */
-  --lx-accent:        #3FB950;
-  --lx-accent-hover:  #2EA043;
-  --lx-accent-dim:    rgba(63, 185, 80, 0.12);
+  --font-body: -apple-system, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", "SF Mono", monospace;
 
-  /* Accent — Code Blue */
-  --lx-blue:          #58A6FF;
-  --lx-blue-dim:      rgba(88, 166, 255, 0.12);
-
-  /* Accent — Warning Orange */
-  --lx-orange:        #D29922;
-  --lx-orange-dim:    rgba(210, 153, 34, 0.12);
-
-  /* Typography */
-  --lx-font-heading:  system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --lx-font-body:     system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --lx-font-mono:     'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-
-  /* Spacing */
-  --lx-space-xs:  0.5rem;
-  --lx-space-sm:  1rem;
-  --lx-space-md:  1.5rem;
-  --lx-space-lg:  2rem;
-  --lx-space-xl:  3rem;
-  --lx-space-2xl: 5rem;
-
-  /* Radii */
-  --lx-radius-sm: 6px;
-  --lx-radius-md: 12px;
-  --lx-radius-lg: 16px;
-  --lx-radius-full: 999px;
-
-  /* Shadows */
-  --lx-shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --lx-shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --lx-shadow-glow: 0 0 20px rgba(63, 185, 80, 0.15);
-
-  /* Transitions */
-  --lx-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --transition: 180ms ease;
 }
 
-/* ============================================
-   1. Global Overrides
-   ============================================ */
-
-/* --- Map VitePress CSS vars to our tokens --- */
+/* --- VitePress Overrides --- */
 :root {
-  --vp-c-bg:               var(--lx-bg);
-  --vp-c-bg-alt:           var(--lx-bg-elevated);
-  --vp-c-bg-elv:           var(--lx-bg-elevated);
-  --vp-c-bg-soft:          var(--lx-bg-hover);
-  --vp-c-border:           var(--lx-border);
-  --vp-c-divider:          var(--lx-border-light);
-  --vp-c-text-1:           var(--lx-text-primary);
-  --vp-c-text-2:           var(--lx-text-secondary);
-  --vp-c-text-3:           var(--lx-text-muted);
-  --vp-c-brand-1:          var(--lx-accent);
-  --vp-c-brand-2:          var(--lx-accent-hover);
-  --vp-c-brand-3:          var(--lx-accent);
-  --vp-c-brand-soft:       var(--lx-accent-dim);
-  --vp-c-gray-1:           var(--lx-text-muted);
-  --vp-c-gray-2:           var(--lx-border);
-  --vp-c-gray-3:           var(--lx-border-light);
-  --vp-c-gray-soft:        rgba(139, 148, 158, 0.1);
-
-  --vp-font-family-base:   var(--lx-font-body);
-  --vp-font-family-mono:   var(--lx-font-mono);
-
-  --vp-nav-bg-color:       rgba(13, 17, 23, 0.85);
-  --vp-nav-height:         64px;
-  --vp-sidebar-width:      280px;
-
-  /* Home hero */
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #3FB950 0%, #58A6FF 100%);
+  --vp-c-bg: var(--c-bg);
+  --vp-c-bg-alt: var(--c-surface);
+  --vp-c-bg-elv: var(--c-surface);
+  --vp-c-bg-soft: var(--c-surface-hover);
+  --vp-c-border: var(--c-border);
+  --vp-c-divider: var(--c-border-light);
+  --vp-c-text-1: var(--c-text);
+  --vp-c-text-2: var(--c-text-dim);
+  --vp-c-text-3: var(--c-text-muted);
+  --vp-c-brand-1: var(--c-amber);
+  --vp-c-brand-2: var(--c-amber-hover);
+  --vp-c-brand-3: var(--c-amber);
+  --vp-c-brand-soft: var(--c-amber-dim);
+  --vp-c-gray-1: var(--c-text-muted);
+  --vp-c-gray-2: var(--c-border);
+  --vp-c-gray-3: var(--c-border-light);
+  --vp-c-gray-soft: rgba(140, 136, 128, 0.08);
+  --vp-font-family-base: var(--font-body);
+  --vp-font-family-mono: var(--font-mono);
+  --vp-nav-bg-color: rgba(13, 13, 13, 0.88);
+  --vp-nav-height: 56px;
+  --vp-sidebar-width: 260px;
+  --vp-home-hero-name-color: var(--c-amber);
+  --vp-home-hero-name-background: none;
   --vp-home-hero-image-background-image: none;
   --vp-home-hero-image-filter: none;
-  --vp-button-brand-bg:    var(--lx-accent);
-  --vp-button-brand-hover: var(--lx-accent-hover);
-  --vp-button-brand-text:  #0D1117;
-  --vp-button-alt-bg:      var(--lx-bg-elevated);
-  --vp-button-alt-border:  var(--lx-border);
-  --vp-button-alt-text:    var(--lx-text-primary);
-  --vp-button-alt-hover-bg: var(--lx-bg-hover);
-
-  --vp-code-block-bg:      var(--lx-bg-elevated);
-  --vp-code-line-height:   1.6;
-  --vp-code-font-size:     0.875rem;
+  --vp-button-brand-bg: var(--c-amber);
+  --vp-button-brand-hover: var(--c-amber-hover);
+  --vp-button-brand-text: #0D0D0D;
+  --vp-button-alt-bg: var(--c-surface);
+  --vp-button-alt-border: var(--c-border);
+  --vp-button-alt-text: var(--c-text);
+  --vp-button-alt-hover-bg: var(--c-surface-hover);
+  --vp-code-block-bg: var(--c-code-bg);
+  --vp-code-line-height: 1.65;
+  --vp-code-font-size: 0.85rem;
+  --vp-code-color: var(--c-text);
 }
 
-/* --- Body base --- */
 body {
-  background: var(--lx-bg);
-  color: var(--lx-text-primary);
-  font-family: var(--lx-font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 /* ============================================
-   2. Typography
+   Typography
    ============================================ */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--lx-font-heading);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--lx-text-primary);
+h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.3rem; margin-top: 2.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--c-border); }
+h3 { font-size: 1.1rem; }
+
+a { color: var(--c-amber); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--c-amber-hover); }
+
+p { margin-bottom: 1.25rem; }
+
+pre, code { font-family: var(--font-mono) !important; }
+
+.vp-doc div[class*='language-'] {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  margin: 1.5rem 0;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 1.75rem; }
-h3 { font-size: 1.25rem; }
-
-a {
-  color: var(--lx-blue);
-  transition: color var(--lx-transition);
-}
-a:hover {
-  color: var(--lx-accent);
+/* Inline code */
+.vp-doc :not(pre) > code {
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 0.1em 0.4em;
+  font-size: 0.88em;
+  color: var(--c-amber);
 }
 
-/* --- Code blocks --- */
-pre, code {
-  font-family: var(--lx-font-mono) !important;
+/* Blockquote — amber left bar */
+.vp-doc blockquote {
+  border-left: 3px solid var(--c-amber);
+  background: var(--c-surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--c-text-dim);
+  font-style: italic;
 }
 
-.vp-code-group .tabs label {
-  font-family: var(--lx-font-mono);
-  font-size: 0.8rem;
-}
+.vp-doc blockquote p { margin-bottom: 0.5rem; }
 
-div[class*='language-'] {
-  border-radius: var(--lx-radius-md);
-  border: 1px solid var(--lx-border);
-  box-shadow: var(--lx-shadow-sm);
-}
+/* Lists */
+.vp-doc ul, .vp-doc ol { padding-left: 1.5rem; }
+.vp-doc li { line-height: 1.8; }
+.vp-doc li::marker { color: var(--c-amber); }
 
 /* ============================================
-   3. Navbar
+   Navbar
    ============================================ */
 
 .VPNav {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--lx-border);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid var(--c-border);
 }
 
 .VPNavBarTitle .title {
-  font-family: var(--lx-font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
 }
 
-.VPNavBarMenuLink {
-  font-family: var(--lx-font-body);
-  font-weight: 500;
-}
+.VPNavBarMenuLink { font-weight: 500; font-size: 0.9rem; }
+.VPNavBarMenuLink.active { color: var(--c-amber) !important; }
 
-.VPNavBarMenuLink.active {
-  color: var(--lx-accent) !important;
-}
-
-/* Nav social link icon */
-.VPSocialLinks.VPNavBarSocialLinks svg {
-  width: 18px;
-  height: 18px;
-}
+.VPSocialLinks.VPNavBarSocialLinks svg { width: 17px; height: 17px; opacity: 0.7; }
 
 /* ============================================
-   4. Sidebar
+   Sidebar
    ============================================ */
 
 .VPSidebar {
-  background: var(--lx-bg-elevated);
-  border-right: 1px solid var(--lx-border);
+  background: var(--c-surface);
+  border-right: 1px solid var(--c-border);
 }
 
-.VPSidebarItem .item .text {
-  font-family: var(--lx-font-body);
-}
-
-.VPSidebarItem.is-active > .item .text {
-  color: var(--lx-accent);
-  font-weight: 600;
-}
+.VPSidebarItem.is-active > .item .text { color: var(--c-amber); font-weight: 600; }
 
 /* ============================================
-   5. Home Page — Hero Override
+   Home Page
    ============================================ */
 
 .VPHero {
-  padding: 6rem 0 4rem;
-  position: relative;
-  overflow: hidden;
+  padding: 4rem 0 2rem;
+  text-align: left;
 }
 
-.VPHero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(63, 185, 80, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 30%, rgba(88, 166, 255, 0.04) 0%, transparent 50%);
-  pointer-events: none;
-}
+.VPHero .container { max-width: 680px; margin: 0 auto; padding: 0 1.5rem; }
 
 .VPHero .name {
-  font-family: var(--lx-font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 .VPHero .text {
-  font-family: var(--lx-font-heading);
-  font-weight: 500;
-  font-size: 1.5rem;
-  line-height: 1.8;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--c-text-dim);
+  line-height: 1.7;
+  max-width: 520px;
 }
 
 .VPHero .tagline {
-  font-family: var(--lx-font-mono);
-  font-size: 0.95rem;
-  color: var(--lx-text-secondary);
-  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  letter-spacing: 0.03em;
+  margin-top: 0.75rem;
 }
 
-/* --- CTA Buttons --- */
+.VPHero .actions { margin-top: 1.5rem; }
+
 .VPHero .VPButton {
-  border-radius: var(--lx-radius-full);
-  font-family: var(--lx-font-heading);
+  border-radius: var(--radius);
   font-weight: 600;
-  padding: 0.65rem 2rem;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
-  transition: all var(--lx-transition);
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  transition: all var(--transition);
 }
 
-.VPHero .VPButton.brand {
-  box-shadow: 0 0 20px rgba(63, 185, 80, 0.25);
-}
-.VPHero .VPButton.brand:hover {
-  box-shadow: 0 0 30px rgba(63, 185, 80, 0.4);
-  transform: translateY(-1px);
-}
+.VPHero .VPButton.brand:hover { transform: translateY(-1px); }
 
-/* ============================================
-   6. Bento Grid Section (Home)
-   ============================================ */
-
+/* --- BentoHome section --- */
 .bento-section {
-  max-width: 960px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 5rem;
+  padding: 0 1.5rem 4rem;
 }
 
 .bento-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.bento-card {
-  background: var(--lx-bg-elevated);
-  border: 1px solid var(--lx-border);
-  border-radius: var(--lx-radius-lg);
-  padding: 1.5rem;
-  transition: all var(--lx-transition);
-  position: relative;
-  overflow: hidden;
-}
-.bento-card:hover {
-  border-color: var(--lx-accent);
-  box-shadow: var(--lx-shadow-glow);
-  transform: translateY(-2px);
-}
-
-.bento-card.card-wide {
-  grid-column: span 2;
-}
-.bento-card.card-tall {
-  grid-row: span 2;
-}
-
-.bento-card .card-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-  opacity: 0.8;
-}
-
-.bento-card .card-label {
-  font-family: var(--lx-font-mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--lx-accent);
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--c-border);
   margin-bottom: 0.5rem;
 }
 
-.bento-card h3 {
-  font-family: var(--lx-font-heading);
-  font-size: 1.1rem;
-  margin: 0.25rem 0 0.5rem;
-  color: var(--lx-text-primary);
+.stat-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.bento-card p {
-  font-size: 0.9rem;
-  color: var(--lx-text-secondary);
-  line-height: 1.6;
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--c-amber);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Intro card */
+.intro-card {
+  padding: 1.25rem 0;
+}
+
+.intro-card p {
+  color: var(--c-text-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
   margin: 0;
 }
 
-/* Stat number */
-.bento-card .stat-number {
-  font-family: var(--lx-font-heading);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--lx-accent);
-  line-height: 1;
+/* Recent posts */
+.section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.recent-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.recent-posts li {
+  border-bottom: 1px solid var(--c-border-light);
+}
+
+.recent-posts li:last-child {
+  border-bottom: none;
+}
+
+.recent-posts a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  color: var(--c-text);
+  text-decoration: none;
+  transition: color var(--transition);
+  font-size: 0.95rem;
+}
+
+.recent-posts a:hover {
+  color: var(--c-amber);
+}
+
+.recent-posts .post-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+/* Tags */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 1rem 0;
+}
+
+.tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-dim);
+  transition: all var(--transition);
+}
+
+.tag-pill:hover {
+  border-color: var(--c-amber);
+  color: var(--c-amber);
+  background: var(--c-amber-dim);
+}
+
+/* ============================================
+   Blog List
+   ============================================ */
+
+.blog-list-header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1rem;
+}
+
+.blog-list-header h1 {
+  font-size: 1.75rem;
   margin-bottom: 0.25rem;
 }
 
-/* Recent posts list in bento */
-.bento-card .recent-posts {
-  list-style: none;
-  padding: 0;
-  margin: 0.75rem 0 0;
-}
-.bento-card .recent-posts li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--lx-border-light);
-}
-.bento-card .recent-posts li:last-child {
-  border-bottom: none;
-}
-.bento-card .recent-posts a {
-  font-size: 0.9rem;
-  color: var(--lx-text-primary);
-  text-decoration: none;
-  transition: color var(--lx-transition);
-}
-.bento-card .recent-posts a:hover {
-  color: var(--lx-accent);
-}
-.bento-card .recent-posts .post-date {
-  font-family: var(--lx-font-mono);
-  font-size: 0.75rem;
-  color: var(--lx-text-muted);
+.blog-list-header .subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
 }
 
-/* Tag pills */
-.tag-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-.tag-pill {
-  font-family: var(--lx-font-mono);
-  font-size: 0.7rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--lx-radius-full);
-  background: var(--lx-bg-hover);
-  border: 1px solid var(--lx-border);
-  color: var(--lx-text-secondary);
-  transition: all var(--lx-transition);
-}
-.tag-pill:hover {
-  border-color: var(--lx-accent);
-  color: var(--lx-accent);
-}
-
-/* ============================================
-   7. Blog List Page
-   ============================================ */
-
-.blog-list {
-  max-width: 780px;
+.post-list {
+  max-width: 680px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.blog-list .section-header {
-  margin-bottom: 2rem;
-}
-
-.blog-list .section-header h1 {
-  font-family: var(--lx-font-heading);
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.blog-list .section-header .subtitle {
-  font-family: var(--lx-font-mono);
-  font-size: 0.85rem;
-  color: var(--lx-text-muted);
-}
-
-.blog-post-card {
-  background: var(--lx-bg-elevated);
-  border: 1px solid var(--lx-border);
-  border-radius: var(--lx-radius-md);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  transition: all var(--lx-transition);
-  cursor: pointer;
-  text-decoration: none;
+.post-card {
   display: block;
-}
-.blog-post-card:hover {
-  border-color: var(--lx-accent);
-  box-shadow: var(--lx-shadow-glow);
-  transform: translateX(4px);
-}
-
-.blog-post-card .post-date {
-  font-family: var(--lx-font-mono);
-  font-size: 0.75rem;
-  color: var(--lx-text-muted);
-  margin-bottom: 0.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--c-border-light);
+  text-decoration: none;
+  color: var(--c-text);
+  transition: all var(--transition);
 }
 
-.blog-post-card .post-title {
-  font-family: var(--lx-font-heading);
-  font-size: 1.2rem;
+.post-card:last-child { border-bottom: none; }
+.post-card:hover { padding-left: 0.5rem; }
+
+.post-card .post-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--c-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.post-card .post-title {
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--lx-text-primary);
-  margin-bottom: 0.5rem;
+  color: var(--c-text);
+  margin-bottom: 0.25rem;
+  transition: color var(--transition);
 }
 
-.blog-post-card .post-excerpt {
-  font-size: 0.9rem;
-  color: var(--lx-text-secondary);
+.post-card:hover .post-title { color: var(--c-amber); }
+
+.post-card .post-desc {
+  font-size: 0.85rem;
+  color: var(--c-text-dim);
   line-height: 1.6;
 }
 
-.blog-post-card .post-arrow {
-  display: inline-block;
-  color: var(--lx-accent);
-  margin-left: 0.25rem;
-  transition: transform var(--lx-transition);
-}
-.blog-post-card:hover .post-arrow {
-  transform: translateX(4px);
-}
-
 /* ============================================
-   8. Content Pages (Blog Post / About)
+   Article Page
    ============================================ */
 
 .vp-doc {
-  font-family: var(--lx-font-body);
-  color: var(--lx-text-primary);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  color: var(--c-text);
 }
 
 .vp-doc h1 {
-  font-family: var(--lx-font-heading);
-  font-size: 2.25rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .vp-doc h2 {
-  font-family: var(--lx-font-heading);
-  margin-top: 3rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--lx-border);
+  margin-top: 2.5rem;
 }
 
 .vp-doc p {
-  line-height: 1.8;
-}
-
-.vp-doc blockquote {
-  border-left: 3px solid var(--lx-accent);
-  background: var(--lx-bg-elevated);
-  border-radius: 0 var(--lx-radius-sm) var(--lx-radius-sm) 0;
-  padding: 1rem 1.25rem;
-}
-
-.vp-doc ul, .vp-doc ol {
-  padding-left: 1.5rem;
-}
-
-.vp-doc li {
-  line-height: 1.8;
-}
-
-/* Code in content */
-.vp-doc :not(pre) > code {
-  background: var(--lx-bg-elevated);
-  border: 1px solid var(--lx-border);
-  border-radius: var(--lx-radius-sm);
-  padding: 0.15rem 0.4rem;
-  font-size: 0.85em;
-  color: var(--lx-orange);
+  line-height: 1.85;
+  font-size: 1rem;
 }
 
 /* ============================================
-   9. Footer
+   Footer
    ============================================ */
 
 .VPFooter {
-  border-top: 1px solid var(--lx-border) !important;
-  background: var(--lx-bg-elevated);
-  padding: 2rem 0;
+  border-top: 1px solid var(--c-border) !important;
+  background: var(--c-surface);
+  padding: 1.5rem 0;
 }
 
 .VPFooter .message,
 .VPFooter .copyright {
-  font-family: var(--lx-font-body);
-  font-size: 0.85rem;
-  color: var(--lx-text-muted);
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
 }
 
 /* ============================================
-   10. Scrollbar
+   Scrollbar
    ============================================ */
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--lx-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--lx-border);
-  border-radius: var(--lx-radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--lx-text-muted);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: var(--radius); }
+::-webkit-scrollbar-thumb:hover { background: var(--c-text-muted); }
 
 /* ============================================
-   11. Responsive
+   Responsive
    ============================================ */
 
-@media (max-width: 768px) {
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-  .bento-card.card-wide {
-    grid-column: span 1;
-  }
-  .bento-card.card-tall {
-    grid-row: span 1;
-  }
-  .bento-section {
-    padding: 1.5rem 1rem 3rem;
-  }
-  .blog-list {
-    padding: 1.5rem 1rem;
-  }
+@media (max-width: 480px) {
+  .VPHero { padding: 2.5rem 0 1.5rem; }
+  .VPHero .name { font-size: 1.6rem; }
+  .VPHero .text { font-size: 0.95rem; }
+  .stats-bar { gap: 1.5rem; }
+  .stat-value { font-size: 1.35rem; }
 }
